@@ -1,6 +1,6 @@
 ---
 - name: apt-updates
-  hosts: inital # remember to setup /etc/ansible/hosts to the host to be setup
+  hosts: initial # remember to setup /etc/ansible/hosts to the host to be setup
   tasks:
     - name: Set timezone
       timezone:
