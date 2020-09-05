@@ -4,5 +4,3 @@
   tasks:
     - name: Set timezone
       command: sudo timedatectl set-timezone America/New_York
-    - name: Set hostname
-      command: sudo hostname changeme
