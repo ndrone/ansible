@@ -1,0 +1,13 @@
+---
+- name: apt-updates
+  hosts: pis
+  # APT module doesn't work with sudoers set to NOPASSWD so I have to do it from the CLI commands
+  tasks:
+    - name: Update APT
+      command: sudo apt-get update
+    - name: Upgrade all installed packages
+      command: sudo apt-get upgrade -y
+    - name: Removed useless packages from cache
+      command: sudo apt-get autoclean
+    - name: Remove packages that are no longer required
+      command: sudo apt-get autoremove -y
