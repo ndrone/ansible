@@ -1,0 +1,10 @@
+---
+- name: dnspi setup
+  hosts: dns
+  tasks:
+    - name: disable WiFi
+      command: echo "dtoverlay=pi3-disable-wifi" | sudo tee -a /boot/config.txt
+    - name: disable Bluetooth
+      command: echo "dtoverlay=pi3-disable-bt" | sudo tee -a /boot/config.txt
+    - name: disable Bluetooth service
+      command: sudo systemctl disable hciuart
