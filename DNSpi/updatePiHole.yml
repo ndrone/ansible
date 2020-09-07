@@ -1,0 +1,6 @@
+---
+- name: PiHole update
+  hosts: dns
+  tasks:
+    - name: Updating PiHole
+      command: sudo pihole -up
