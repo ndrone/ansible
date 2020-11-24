@@ -14,7 +14,7 @@
       apt_repository:
         repo: deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main
         state: present
-        filename: mongo.list
+        filename: mongo
     - name: Mongo Install
       become: yes
       become_user: root
