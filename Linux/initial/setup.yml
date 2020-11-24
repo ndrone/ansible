@@ -3,4 +3,7 @@
   hosts: initial # remember to setup /etc/ansible/hosts to the host to be setup
   tasks:
     - name: Set timezone
-      command: sudo timedatectl set-timezone America/New_York
+      become: yes
+      become_user: root
+      timezone:
+        name: America/New_York
