@@ -3,6 +3,7 @@
 Ansible Playbooks
 
 * DNSPi - playbooks specific for DNSPi
+* UniFiControllerPi - playbooks specific for UniFi Controller install
 * Linux - Common Linux playbooks
 ** initial - Common playbooks for one time runs and setup
 ** updates - Common playbooks for routine updates to be made
