@@ -3,7 +3,7 @@
   hosts: unificontrollerpi
   tasks:
     - name: Set Hostname
-      command: sudo hostnamectl set-hostname uniFiControllerPi
+      command: sudo hostnamectl set-hostname controllerpi
     - name: disable WiFi
       command: echo "dtoverlay=pi3-disable-wifi" | sudo tee -a /boot/config.txt
     - name: disable Bluetooth
