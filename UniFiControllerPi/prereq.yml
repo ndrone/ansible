@@ -2,9 +2,24 @@
 - name: UniFi Controller required dependencies install
   hosts: unificontrollerpi
   tasks:
-    - name: Required dependencies Install
+    - name: Install CA Certificates
       become: yes
       become_user: root
       apt:
         update_cache: yes
-        name: ca-certificates apt-transport-https default-jre gnupg
+        name: ca-certificates
+    - name: Install APT transport HTTPS
+      become: yes
+      become_user: root
+      apt:
+        name: apt-transport-https
+    - name: Install Java Runtime
+      become: yes
+      become_user: root
+      apt:
+        name: default-jre
+    - name: Install GNUPG
+      become: yes
+      become_user: root
+      apt:
+        name: gnupg
