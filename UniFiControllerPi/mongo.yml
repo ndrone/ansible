@@ -6,13 +6,13 @@
       become: yes
       become_user: root
       apt_key:
-        url: https://www.mongodb.org/static/pgp/server-3.0.asc
+        url: https://www.mongodb.org/static/pgp/server-4.4.asc
         state: present
     - name: Add MongoDB repository
       become: yes
       become_user: root
       apt_repository:
-        repo: deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.0 main
+        repo: deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main
         state: present
         filename: mongo.list
     - name: Mongo Install
@@ -21,3 +21,9 @@
       apt:
         update_cache: yes
         name: mongodb-org
+    - name: Start Mongo Service
+      become: yes
+      become_user: root
+      systemd:
+        name: mongod
+        state: started
