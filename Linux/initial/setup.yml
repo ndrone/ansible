@@ -7,16 +7,11 @@
       become_user: root
       timezone:
         name: America/New_York
-    - name: APT Update
+    - name: APT Update and Upgrade
       become: yes
       become_user: root
       apt:
         update_cache: yes
-    - name: APT Upgrade
-      become: yes
-      become_user: root
-      apt:
-        name: "*"
-        state: latest
+        upgrade: yes
         autoclean: yes
         autoremove: yes
