@@ -1,0 +1,23 @@
+---
+- name: UniFi Controller MongoDB install
+  hosts: unificontrollerpi
+  tasks:
+    - name: Add MongoDB GPG trusted key
+      become: yes
+      become_user: root
+      apt_key:
+        url: https://www.mongodb.org/static/pgp/server-3.0.asc
+        state: present
+    - name: Add MongoDB repository
+      become: yes
+      become_user: root
+      apt_repository:
+        repo: deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.0 main
+        state: present
+        filename: mongo.list
+    - name: APT Update
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: mongodb-org
