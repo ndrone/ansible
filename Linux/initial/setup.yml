@@ -7,7 +7,7 @@
       become_user: root
       timezone:
         name: America/New_York
-    - name: APT Update and upgrade
+    - name: APT Update and Upgrade
       become: yes
       become_user: root
       apt:
