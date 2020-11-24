@@ -4,9 +4,18 @@
   tasks:
     - name: Set Hostname
       command: sudo hostnamectl set-hostname dnspi
+    - name: Update hosts file
+      become: yes
+      become_user: root
+      lineinfile:
+        path: /etc/hosts
+        regexp: '^127\.0\.1\.1'
+        line: '127.0.1.1 dnspi'
     - name: disable WiFi
       command: echo "dtoverlay=pi3-disable-wifi" | sudo tee -a /boot/config.txt
     - name: disable Bluetooth
       command: echo "dtoverlay=pi3-disable-bt" | sudo tee -a /boot/config.txt
     - name: disable Bluetooth service
       command: sudo systemctl disable hciuart
+    - name: Reboot
+      reboot:

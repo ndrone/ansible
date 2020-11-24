@@ -17,5 +17,5 @@
       command: echo "dtoverlay=pi3-disable-bt" | sudo tee -a /boot/config.txt
     - name: disable Bluetooth service
       command: sudo systemctl disable hciuart
-#    - name: Reboot
-#      reboot:
+    - name: Reboot
+      reboot:
