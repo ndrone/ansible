@@ -18,4 +18,4 @@
     - name: disable Bluetooth service
       command: sudo systemctl disable hciuart
     - name: Reboot
-      reboot:
+      command: sudo reboot
