@@ -3,8 +3,8 @@
   hosts: unificontrollerpi
   tasks:
     - name: Required dependencies Install
-        become: yes
-        become_user: root
-        apt:
-          update_cache: yes
-          name: ca-certificates apt-transport-https default-jre gnupg
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: ca-certificates apt-transport-https default-jre gnupg
