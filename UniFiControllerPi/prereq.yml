@@ -18,8 +18,19 @@
       become_user: root
       apt:
         name: default-jre
-    - name: Install GNUPG
+    - name: Install RNG Tools
       become: yes
       become_user: root
       apt:
-        name: gnupg
+        name: rng-tools
+    - name: Update RNG Tools Config file
+      become: yes
+      become_user: root
+      lineinfile:
+        path: /etc/default/rng-tools
+        regexp: '^#HRNGDEVICE=\/dev\/hwrng'
+        line: 'HRNGDEVICE=/dev/hwrng'
+    - name: Restart RNG Tools
+      systemd:
+        name: rng-tools
+        state: restarted
