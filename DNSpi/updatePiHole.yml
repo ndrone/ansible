@@ -3,4 +3,6 @@
   hosts: dns
   tasks:
     - name: Updating PiHole
-      command: sudo pihole -up
+      become: yes
+      become_user: root
+      command: pihole -up
