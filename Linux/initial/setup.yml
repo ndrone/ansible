@@ -15,3 +15,9 @@
         upgrade: yes
         autoclean: yes
         autoremove: yes
+    - name: Add my user account
+      user:
+        name: nick
+        groups: sudo
+        append: yes
+        
