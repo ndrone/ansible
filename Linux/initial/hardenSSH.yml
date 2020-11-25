@@ -18,3 +18,9 @@
         regexp: '^#PasswordAuthentication\syes'
         line: 'PasswordAuthentication no'
         state: present
+    - name: Restart SSH
+      become: yes
+      become_user: root
+      systemd:
+        name: ssh
+        state: restarted
