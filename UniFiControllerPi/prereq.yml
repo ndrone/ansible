@@ -17,7 +17,7 @@
       become: yes
       become_user: root
       apt:
-        name: default-jre
+        name: openjdk-8-jre-headless
     - name: Install RNG Tools
       become: yes
       become_user: root
