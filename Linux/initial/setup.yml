@@ -23,9 +23,9 @@
         groups: sudo
         append: yes
     - name: Add ansible account
-        become: yes
-        become_user: root
-        user:
-          name: ansible
-          groups: sudo
-          append: yes
+      become: yes
+      become_user: root
+      user:
+        name: ansible
+        groups: sudo
+        append: yes
