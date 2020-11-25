@@ -16,9 +16,9 @@
         autoclean: yes
         autoremove: yes
     - name: Add my user account
+      become: yes
+      become_user: root
       user:
         name: nick
-        password: changeit
         groups: sudo
         append: yes
-
