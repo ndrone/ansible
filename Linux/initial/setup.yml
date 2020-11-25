@@ -18,6 +18,7 @@
     - name: Add my user account
       user:
         name: nick
+        password: changeit
         groups: sudo
         append: yes
-        
+
