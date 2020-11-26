@@ -3,7 +3,10 @@
   hosts: unificontrollerpi
   tasks:
     - name: Set Hostname
-      command: sudo hostnamectl set-hostname controllerpi
+        become: yes
+        become_user: root
+        hostname:
+          name: controllerpi
     - name: Update hosts file
       become: yes
       become_user: root
