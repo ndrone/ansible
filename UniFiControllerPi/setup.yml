@@ -3,10 +3,10 @@
   hosts: unificontrollerpi
   tasks:
     - name: Set Hostname
-        become: yes
-        become_user: root
-        hostname:
-          name: controllerpi
+      become: yes
+      become_user: root
+      hostname:
+        name: controllerpi
     - name: Update hosts file
       become: yes
       become_user: root
