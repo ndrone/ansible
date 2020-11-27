@@ -1,0 +1,28 @@
+---
+- name: Monitor Pi setup
+  hosts: monitorpi
+  tasks:
+    - name: Set Hostname
+      become: yes
+      become_user: root
+      hostname:
+        name: monitorpi
+    - name: Update hosts file
+      become: yes
+      become_user: root
+      lineinfile:
+        path: /etc/hosts
+        regexp: '^127\.0\.1\.1'
+        line: '127.0.1.1 monitorpi'
+    - name: disable WiFi
+      become: yes
+      become_user: root
+      lineinfile:
+        path: /boot/config.txt
+        state: present
+        insertafter: EOF
+        line: 'dtoverlay=pi3-disable-wifi'
+    - name: Reboot
+      become: yes
+      become_user: root
+      reboot:
