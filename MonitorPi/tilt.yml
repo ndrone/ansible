@@ -15,3 +15,7 @@
       apt:
         update_cache: yes
         name: python3-distutils
+    - name: Download Aioblescan
+      become: yes
+      become_user: tiltUser
+      command: wget https://github.com/baronbrew/aioblescan/archive/master.zip
