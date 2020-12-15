@@ -1,0 +1,42 @@
+---
+- name: Speedtest install
+  hosts: monitorpi
+  tasks:
+    - name: install gnupg1
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: gnupg1
+    - name: install apt-transport-https
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: apt-transport-https
+    - name: install dirmngr
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: dirmngr
+    - name: Add trusted key
+      become: yes
+      become_user: root
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: 379CE192D401AB61
+        state: present
+    - name: Add Speedtest repository
+      become: yes
+      become_user: root
+      apt_repository:
+        repo: deb https://ookla.bintray.com/debian generic main
+        state: present
+        filename: speedtest
+    - name: Speedtest Install
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: speedtest
