@@ -33,7 +33,7 @@
       become: yes
       become_user: root
       apt_repository:
-        repo: deb https://packagecloud.io/ookla/speedtest-cli/debian/ buster main
+        repo: deb [signed-by=/usr/share/keyrings/speedtest-cli-archive-keyring.gpg] https://packagecloud.io/ookla/speedtest-cli/debian/ buster main
         state: present
         filename: speedtest
     - name: Speedtest Install
