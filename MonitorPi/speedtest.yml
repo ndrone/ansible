@@ -23,7 +23,7 @@
     - name: Install GPG key
       become: yes
       become_user: root
-      command: wget -O- https://packagecloud.io/ookla/speedtest-cli/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/speedtest-cli-archive-keyring.gpg
+      command: wget -O- https://packagecloud.io/ookla/speedtest-cli/gpgkey | gpg --dearmor | tee /usr/share/keyrings/speedtest-cli-archive-keyring.gpg
 #    - name: Add Speedtest repository
 #      become: yes
 #      become_user: root
