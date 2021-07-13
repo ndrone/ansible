@@ -20,23 +20,20 @@
       apt:
         update_cache: yes
         name: dirmngr
-    - name: Add trusted key
-      become: yes
-      become_user: root
-      apt_key:
-        keyserver: keyserver.ubuntu.com
-        id: 379CE192D401AB61
-        state: present
-    - name: Add Speedtest repository
-      become: yes
-      become_user: root
-      apt_repository:
-        repo: deb https://ookla.bintray.com/debian generic main
-        state: present
-        filename: speedtest
-    - name: Speedtest Install
-      become: yes
-      become_user: root
-      apt:
-        update_cache: yes
-        name: speedtest
+    - name: Download GPG key
+      get_url:
+        url: https://packagecloud.io/ookla/speedtest-cli/gpgkey
+        dest: /home/ansible/speedtest-gpgkey
+#    - name: Add Speedtest repository
+#      become: yes
+#      become_user: root
+#      apt_repository:
+#        repo: deb https://ookla.bintray.com/debian generic main
+#        state: present
+#        filename: speedtest
+#    - name: Speedtest Install
+#      become: yes
+#      become_user: root
+#      apt:
+#        update_cache: yes
+#        name: speedtest
