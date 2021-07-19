@@ -11,7 +11,7 @@
 #      become: yes
 #      become_user: root
 #      command: gpg --dearmor < /home/ansible/influxdb.gpg > /usr/share/keyrings/influxdb-archive-keyring.gpg
-    - name: Add Speedtest repository
+    - name: Add InfluxDB repository
       become: yes
       become_user: root
       apt_repository:
