@@ -11,18 +11,25 @@
 #      become: yes
 #      become_user: root
 #      command: gpg --dearmor < /home/ansible/influxdb.gpg > /usr/share/keyrings/influxdb-archive-keyring.gpg
-#    - name: InfluxDB Install
-#      become: yes
-#      become_user: root
-#      apt:
-#        update_cache: yes
-#        name: influxdb
-#    - name: Enable service InfluxDB and ensure it is not masked
-#      systemd:
-#        name: influxdb
-#        enabled: yes
-#        masked: no
-#    - name: Start service InfluxDB
-#      systemd:
-#        name: influxdb
-#        state: started
+    - name: Add Speedtest repository
+      become: yes
+      become_user: root
+      apt_repository:
+        repo: deb [signed-by=/usr/share/keyrings/influxdb-archive-keyring.gpg] https://repos.influxdata.com/debian buster main
+        state: present
+        filename: influxdb
+    - name: InfluxDB Install
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: influxdb
+    - name: Enable service InfluxDB and ensure it is not masked
+      systemd:
+        name: influxdb
+        enabled: yes
+        masked: no
+    - name: Start service InfluxDB
+      systemd:
+        name: influxdb
+        state: started
