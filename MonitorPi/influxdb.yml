@@ -15,7 +15,7 @@
       become: yes
       become_user: root
       apt_repository:
-        repo: deb [signed-by=/usr/share/keyrings/influxdb-archive-keyring.gpg] https://repos.influxdata.com/debian buster main
+        repo: deb [signed-by=/usr/share/keyrings/influxdb-archive-keyring.gpg] https://repos.influxdata.com/debian buster stable
         state: present
         filename: influxdb
     - name: InfluxDB Install
