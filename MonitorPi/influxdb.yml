@@ -9,11 +9,11 @@
         update_cache: yes
         name: influxdb
     - name: Enable service InfluxDB and ensure it is not masked
-      ansible.builtin.systemd:
+      systemd:
         name: influxdb
         enabled: yes
         masked: no
     - name: Start service InfluxDB
-      ansible.builtin.systemd:
+      systemd:
         name: influxdb
         state: started
