@@ -2,18 +2,27 @@
 - name: InfluxDB install
   hosts: monitorpi
   tasks:
-    - name: InfluxDB Install
-      become: yes
-      become_user: root
-      apt:
-        update_cache: yes
-        name: influxdb
-    - name: Enable service InfluxDB and ensure it is not masked
-      systemd:
-        name: influxdb
-        enabled: yes
-        masked: no
-    - name: Start service InfluxDB
-      systemd:
-        name: influxdb
-        state: started
+    - name: Download GPG key
+      get_url:
+        url: https://repos.influxdata.com/influxdb.key
+        dest: /home/ansible/influxdb.gpg
+#        install must be ran manually as root user
+#    - name: Install GPG key
+#      become: yes
+#      become_user: root
+#      command: gpg --dearmor < /home/ansible/influxdb.gpg > /usr/share/keyrings/influxdb-archive-keyring.gpg
+#    - name: InfluxDB Install
+#      become: yes
+#      become_user: root
+#      apt:
+#        update_cache: yes
+#        name: influxdb
+#    - name: Enable service InfluxDB and ensure it is not masked
+#      systemd:
+#        name: influxdb
+#        enabled: yes
+#        masked: no
+#    - name: Start service InfluxDB
+#      systemd:
+#        name: influxdb
+#        state: started
