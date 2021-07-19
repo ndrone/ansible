@@ -1,0 +1,19 @@
+---
+- name: InfluxDB install
+  hosts: monitorpi
+  tasks:
+    - name: InfluxDB Install
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: influxdb
+    - name: Enable service InfluxDB and ensure it is not masked
+      ansible.builtin.systemd:
+        name: influxdb
+        enabled: yes
+        masked: no
+    - name: Start service InfluxDB
+        ansible.builtin.systemd:
+          name: influxdb
+          state: started
