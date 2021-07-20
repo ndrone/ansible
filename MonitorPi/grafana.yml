@@ -24,11 +24,10 @@
       apt:
         update_cache: yes
         name: grafana
-    - name: Enable service Grafana and ensure it is not masked
+    - name: Enable service Grafana
       systemd:
         name: grafana-server
         enabled: yes
-        masked: no
     - name: Start service Grafana
       systemd:
         name: grafana-server
