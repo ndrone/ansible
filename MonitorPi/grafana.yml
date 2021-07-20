@@ -1,0 +1,26 @@
+---
+- name: Grafana install
+  hosts: monitorpi
+  tasks:
+    - name: Download GPG key
+      get_url:
+        url: https://packages.grafana.com/gpg.key
+        dest: /home/ansible/grafana.gpg
+#        install must be ran manually as root user
+#    - name: Install GPG key
+#      become: yes
+#      become_user: root
+#      command: gpg --dearmor < /home/ansible/grafana.gpg > /usr/share/keyrings/grafana-archive-keyring.gpg
+#    - name: Add Grafana repository
+#      become: yes
+#      become_user: root
+#      apt_repository:
+#        repo: deb [signed-by=/usr/share/keyrings/speedtest-cli-archive-keyring.gpg] https://packagecloud.io/ookla/speedtest-cli/debian/ buster main
+#        state: present
+#        filename: speedtest
+#    - name: Grafana Install
+#      become: yes
+#      become_user: root
+#      apt:
+#        update_cache: yes
+#        name: speedtest
