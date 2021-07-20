@@ -33,3 +33,9 @@
       systemd:
         name: influxdb
         state: started
+    - name: Python3 InfluxDB Install
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: python3-influxdb
