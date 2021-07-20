@@ -1,0 +1,10 @@
+---
+- name: Outage Detector install
+  hosts: monitorpi
+  tasks:
+    - name: Python3 vitual env Install
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: python3-venv
