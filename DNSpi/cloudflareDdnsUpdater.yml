@@ -16,13 +16,3 @@
         minute: "*/1"
         user: root
         job: "/bin/bash /opt/cloudflare-ddns-updater/cloudflare.sh"
-    - name: Copy Template file
-      become: yes
-      become_user: root
-      copy:
-        src: /opt/cloudflare-ddns-updater/cloudflare-template.sh
-        dest: /opt/cloudflare-ddns-updater/cloudflare.sh
-        owner: root
-        group: root
-        mode: u=rwx,g=rwx,o=x
-
