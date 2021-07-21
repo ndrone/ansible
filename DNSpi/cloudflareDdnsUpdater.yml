@@ -8,6 +8,12 @@
       git:
         repo: https://github.com/K0p1-Git/cloudflare-ddns-updater.git
         dest: /opt/cloudflare-ddns-updater
+    - name: Create Cron job
+      cron:
+        name: "Automate DDNS Updater"
+        minute: "*/1"
+        user: root
+        job: "/bin/bash /opt/cloudflare-ddns-updater/cloudflare.sh"
     - name: Copy Template file
       become: yes
       become_user: root
