@@ -1,0 +1,20 @@
+---
+- name: Cloudflare DDNS Updater Install
+  hosts: dns
+  tasks:
+    - name: Clone repository
+      become: yes
+      become_user: root
+      git:
+        repo: https://github.com/K0p1-Git/cloudflare-ddns-updater.git
+        dest: /opt/cloudflare-ddns-updater
+    - name: Copy Template file
+      become: yes
+      become_user: root
+      copy:
+        src: /opt/cloudflare-ddns-updater/cloudflare-template.sh
+        dest: /opt/cloudflare-ddns-updater/cloudflare.sh
+        owner: root
+        group: root
+        mode: u=rwx,g=rwx,o=x
+
