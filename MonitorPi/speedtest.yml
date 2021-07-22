@@ -48,7 +48,7 @@
       file:
         path: /opt/speedtest
         state: directory
-        mode: '0666'
+        mode: '0770'
         owner: monitor
         group: monitor
     - name: Create Cron job
@@ -58,4 +58,4 @@
         name: "Automate speedtest script"
         minute: "0"
         user: monitor
-        job: "python3 /home/monitor/speedtest.py"
+        job: "python3 /opt/speedtest/speedtest.py"
