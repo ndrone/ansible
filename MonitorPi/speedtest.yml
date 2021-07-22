@@ -52,10 +52,10 @@
         owner: monitor
         group: monitor
     - name: Create Cron job
-        become: yes
-        become_user: root
-        cron:
-          name: "Automate speedtest script"
-          minute: "0"
-          user: monitor
-          job: "python3 /home/monitor/speedtest.py"
+      become: yes
+      become_user: root
+      cron:
+        name: "Automate speedtest script"
+        minute: "0"
+        user: monitor
+        job: "python3 /home/monitor/speedtest.py"
