@@ -22,6 +22,10 @@
         state: present
         insertafter: EOF
         line: 'dtoverlay=pi3-disable-wifi'
+    - name: disable Bluetooth service
+      become: yes
+      become_user: root
+      command: systemctl disable hciuart
     - name: Reboot
       become: yes
       become_user: root
