@@ -31,8 +31,8 @@
         name: grafana-server
         enabled: yes
     - name: Start service Grafana
-        become: yes
-        become_user: root
+      become: yes
+      become_user: root
       systemd:
         name: grafana-server
         state: started
