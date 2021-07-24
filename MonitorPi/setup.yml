@@ -26,6 +26,13 @@
       become: yes
       become_user: root
       command: systemctl disable hciuart
+    - name: Add my user account
+      become: yes
+      become_user: root
+      user:
+        name: monitor
+        groups: sudo
+        append: yes
     - name: Reboot
       become: yes
       become_user: root
