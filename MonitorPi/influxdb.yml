@@ -25,11 +25,15 @@
         update_cache: yes
         name: influxdb
     - name: Enable service InfluxDB and ensure it is not masked
+      become: yes
+      become_user: root
       systemd:
         name: influxdb
         enabled: yes
         masked: no
     - name: Start service InfluxDB
+      become: yes
+      become_user: root
       systemd:
         name: influxdb
         state: started
