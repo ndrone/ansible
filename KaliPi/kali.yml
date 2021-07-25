@@ -36,6 +36,12 @@
         repo: deb [signed-by=/usr/share/keyrings/kali-archive-keyring.gpg] http://http.kali.org/kali kali-rolling main contrib non-free
         state: present
         filename: kali
+    - name: Kali headless Install
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: kali-linux-headless
     - name: Kali tools Install
       become: yes
       become_user: root
