@@ -36,18 +36,30 @@
         repo: deb [signed-by=/usr/share/keyrings/kali-archive-keyring.gpg] http://http.kali.org/kali kali-rolling main contrib non-free
         state: present
         filename: kali
+    - name: Kali core Install
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: kali-linux-core
     - name: Kali headless Install
       become: yes
       become_user: root
       apt:
         update_cache: yes
         name: kali-linux-headless
-    - name: Kali tools Install
+    - name: Kali arm Install
       become: yes
       become_user: root
       apt:
         update_cache: yes
         name: kali-linux-arm
+    - name: Kali top 10 tools Install
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: kali-tools-top10
     - name: Create a python symbolic link
       file:
         src: /usr/bin/python2
