@@ -48,3 +48,10 @@
       apt:
         update_cache: yes
         name: kali-linux-arm
+    - name: Create a python symbolic link
+      file:
+        src: /usr/bin/python2
+        dest: /usr/bin/python2
+        owner: root
+        group: root
+        state: link
