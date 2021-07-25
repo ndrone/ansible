@@ -24,16 +24,11 @@
       get_url:
         url: http://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2020.2_all.deb
         dest: /home/ansible/kali-archive-keyring_2020.2_all.deb
-    - name: Install key
-      become: yes
-      become_user: root
-      apt:
-        deb: ./home/ansible/kali-archive-keyring_2020.2_all.deb
-#        install must be ran manually as root user
-#    - name: Install GPG key
+#    - name: Install key
 #      become: yes
 #      become_user: root
-#      command: gpg --dearmor < /home/ansible/speedtest.gpg > /usr/share/keyrings/speedtest-cli-archive-keyring.gpg
+#      apt:
+#        deb: ./home/ansible/kali-archive-keyring_2020.2_all.deb
     - name: Add Kali repository
       become: yes
       become_user: root
