@@ -34,3 +34,16 @@
 #      become: yes
 #      become_user: root
 #      command: gpg --dearmor < /home/ansible/speedtest.gpg > /usr/share/keyrings/speedtest-cli-archive-keyring.gpg
+    - name: Add Kali repository
+      become: yes
+      become_user: root
+      apt_repository:
+        repo: deb [signed-by=/usr/share/keyrings/kali-archive-keyring.gpg] http://http.kali.org/kali kali-rolling main contrib non-free
+        state: present
+        filename: kali
+    - name: Kali tools Install
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: kali-linux-arm
