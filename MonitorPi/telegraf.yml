@@ -1,6 +1,6 @@
 ---
 - name: Telegraf install
-  hosts: pis
+  hosts: monitorpi
   tasks:
     - name: Download GPG key
       get_url:
