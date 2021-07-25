@@ -1,0 +1,36 @@
+---
+- name: Kali install
+  hosts: kalipi
+  tasks:
+    - name: install gnupg1
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: gnupg1
+    - name: install apt-transport-https
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: apt-transport-https
+    - name: install dirmngr
+      become: yes
+      become_user: root
+      apt:
+        update_cache: yes
+        name: dirmngr
+    - name: Download GPG key
+      get_url:
+        url: http://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2020.2_all.deb
+        dest: /home/ansible/kali-archive-keyring_2020.2_all.deb
+    - name: Install key
+      become: yes
+      become_user: root
+      apt:
+        deb: ./home/ansible/kali-archive-keyring_2020.2_all.deb
+#        install must be ran manually as root user
+#    - name: Install GPG key
+#      become: yes
+#      become_user: root
+#      command: gpg --dearmor < /home/ansible/speedtest.gpg > /usr/share/keyrings/speedtest-cli-archive-keyring.gpg
