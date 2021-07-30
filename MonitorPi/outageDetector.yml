@@ -1,16 +1,13 @@
 ---
 - name: Outage Detector install
   hosts: monitorpi
+  become: yes
   tasks:
     - name: Python3 vitual env Install
-      become: yes
-      become_user: root
       apt:
         update_cache: yes
         name: python3-venv
     - name: Create Outage Detector directory
-      become: yes
-      become_user: root
       file:
         path: /opt/outageDetector
         state: directory
@@ -18,16 +15,12 @@
         owner: monitor
         group: monitor
     - name: Create Cron detect job
-      become: yes
-      become_user: root
       cron:
         name: "Automate outagedetector detect script"
         minute: "*/1"
         user: monitor
         job: "/opt/outageDetector/outageDetector/bin/python3 /opt/outageDetector/outageDetector/bin/outage_detector --run scheduled --notify notification"
     - name: Create Cron reboot job
-      become: yes
-      become_user: root
       cron:
         name: "Automate outagedetector reboot script"
         special_time: reboot

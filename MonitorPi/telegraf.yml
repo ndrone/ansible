@@ -1,6 +1,7 @@
 ---
 - name: Telegraf install
   hosts: monitorpi
+  become: yes
   tasks:
     - name: Download GPG key
       get_url:
@@ -8,32 +9,22 @@
         dest: /home/ansible/influxdb.gpg
 #        install must be ran manually as root user
 #    - name: Install GPG key
-#      become: yes
-#      become_user: root
 #      command: gpg --dearmor < /home/ansible/influxdb.gpg > /usr/share/keyrings/influxdb-archive-keyring.gpg
     - name: Add InfluxDB repository
-      become: yes
-      become_user: root
       apt_repository:
         repo: deb [signed-by=/usr/share/keyrings/influxdb-archive-keyring.gpg] https://repos.influxdata.com/debian buster stable
         state: present
         filename: influxdb
     - name: Telegraf Install
-      become: yes
-      become_user: root
       apt:
         update_cache: yes
         name: telegraf
     - name: Enable service Telegraf and ensure it is not masked
-      become: yes
-      become_user: root
       systemd:
         name: telegraf
         enabled: yes
         masked: no
     - name: Start service Telegraf
-      become: yes
-      become_user: root
       systemd:
         name: telegraf
         state: started

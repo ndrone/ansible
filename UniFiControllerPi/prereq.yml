@@ -1,31 +1,22 @@
 ---
 - name: UniFi Controller required dependencies install
   hosts: unificontrollerpi
+  become: yes
   tasks:
     - name: Install CA Certificates
-      become: yes
-      become_user: root
       apt:
         update_cache: yes
         name: ca-certificates
     - name: Install APT transport HTTPS
-      become: yes
-      become_user: root
       apt:
         name: apt-transport-https
     - name: Install Java Runtime
-      become: yes
-      become_user: root
       apt:
         name: openjdk-8-jre-headless
     - name: Install RNG Tools
-      become: yes
-      become_user: root
       apt:
         name: rng-tools
     - name: Update RNG Tools Config file
-      become: yes
-      become_user: root
       lineinfile:
         path: /etc/default/rng-tools
         regexp: '^#HRNGDEVICE=\/dev\/hwrng'

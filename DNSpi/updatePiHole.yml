@@ -1,8 +1,7 @@
 ---
 - name: PiHole update
   hosts: dns
+  become: yes
   tasks:
     - name: Updating PiHole
-      become: yes
-      become_user: root
       command: pihole -up

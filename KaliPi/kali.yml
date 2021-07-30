@@ -1,22 +1,17 @@
 ---
 - name: Kali install
   hosts: kalipi
+  become: yes
   tasks:
     - name: install gnupg1
-      become: yes
-      become_user: root
       apt:
         update_cache: yes
         name: gnupg1
     - name: install apt-transport-https
-      become: yes
-      become_user: root
       apt:
         update_cache: yes
         name: apt-transport-https
     - name: install dirmngr
-      become: yes
-      become_user: root
       apt:
         update_cache: yes
         name: dirmngr
@@ -25,38 +20,26 @@
         url: http://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2020.2_all.deb
         dest: /home/ansible/kali-archive-keyring_2020.2_all.deb
 #    - name: Install key
-#      become: yes
-#      become_user: root
 #      apt:
 #        deb: ./home/ansible/kali-archive-keyring_2020.2_all.deb
     - name: Add Kali repository
-      become: yes
-      become_user: root
       apt_repository:
         repo: deb [signed-by=/usr/share/keyrings/kali-archive-keyring.gpg] http://http.kali.org/kali kali-rolling main contrib non-free
         state: present
         filename: kali
     - name: Kali core Install
-      become: yes
-      become_user: root
       apt:
         update_cache: yes
         name: kali-linux-core
     - name: Kali headless Install
-      become: yes
-      become_user: root
       apt:
         update_cache: yes
         name: kali-linux-headless
     - name: Kali arm Install
-      become: yes
-      become_user: root
       apt:
         update_cache: yes
         name: kali-linux-arm
     - name: Kali top 10 tools Install
-      become: yes
-      become_user: root
       apt:
         update_cache: yes
         name: kali-tools-top10

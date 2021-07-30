@@ -1,28 +1,21 @@
 ---
 - name: Kali Pi setup
   hosts: kalipi
+  become: yes
   tasks:
     - name: Set Hostname
-      become: yes
-      become_user: root
       hostname:
         name: kalipi
     - name: Update hosts file
-      become: yes
-      become_user: root
       lineinfile:
         path: /etc/hosts
         regexp: '^127\.0\.1\.1'
         line: '127.0.1.1 kalipi'
     - name: disable WiFi
-      become: yes
-      become_user: root
       lineinfile:
         path: /boot/config.txt
         state: present
         insertafter: EOF
         line: 'dtoverlay=disable-wifi'
     - name: Reboot
-      become: yes
-      become_user: root
       reboot:

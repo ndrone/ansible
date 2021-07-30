@@ -1,23 +1,18 @@
 ---
 - name: UniFi Controller software install
   hosts: unificontrollerpi
+  become: yes
   tasks:
     - name: Add Ubiquiti GPG trusted key
-      become: yes
-      become_user: root
       apt_key:
         url: https://dl.ui.com/unifi/unifi-repo.gpg
         state: present
     - name: Add Ubiquiti repository
-      become: yes
-      become_user: root
       apt_repository:
         repo: deb https://www.ui.com/downloads/unifi/debian stable ubiquiti
         state: present
         filename: ubiquiti
     - name: UniFi Controller Install
-      become: yes
-      become_user: root
       apt:
         update_cache: yes
         name: unifi

@@ -1,40 +1,29 @@
 ---
 - name: UniFi Controller Pi setup
   hosts: unificontrollerpi
+  become: yes
   tasks:
     - name: Set Hostname
-      become: yes
-      become_user: root
       hostname:
         name: controllerpi
     - name: Update hosts file
-      become: yes
-      become_user: root
       lineinfile:
         path: /etc/hosts
         regexp: '^127\.0\.1\.1'
         line: '127.0.1.1 controllerpi'
     - name: disable WiFi
-      become: yes
-      become_user: root
       lineinfile:
         path: /boot/config.txt
         state: present
         insertafter: EOF
         line: 'dtoverlay=pi3-disable-wifi'
     - name: disable Bluetooth
-      become: yes
-      become_user: root
       lineinfile:
         path: /boot/config.txt
         state: present
         insertafter: EOF
         line: 'dtoverlay=pi3-disable-bt'
     - name: disable Bluetooth service
-      become: yes
-      become_user: root
       command: systemctl disable hciuart
     - name: Reboot
-      become: yes
-      become_user: root
       reboot:

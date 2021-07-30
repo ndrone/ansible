@@ -1,40 +1,29 @@
 ---
 - name: dnspi setup
   hosts: dns
+  become: yes
   tasks:
     - name: Set Hostname
-      become: yes
-      become_user: root
       hostname:
         name: dnspi
     - name: Update hosts file
-      become: yes
-      become_user: root
       lineinfile:
         path: /etc/hosts
         regexp: '^127\.0\.1\.1'
         line: '127.0.1.1 dnspi'
     - name: disable WiFi
-      become: yes
-      become_user: root
       lineinfile:
         path: /boot/config.txt
         state: present
         insertafter: EOF
         line: 'dtoverlay=pi3-disable-wifi'
     - name: disable Bluetooth
-      become: yes
-      become_user: root
       lineinfile:
         path: /boot/config.txt
         state: present
         insertafter: EOF
         line: 'dtoverlay=pi3-disable-bt'
     - name: disable Bluetooth service
-      become: yes
-      become_user: root
       command: systemctl disable hciuart
     - name: Reboot
-      become: yes
-      become_user: root
       reboot:

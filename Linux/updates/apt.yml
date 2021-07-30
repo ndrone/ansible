@@ -1,10 +1,9 @@
 ---
 - name: apt-updates
   hosts: pis
+  become: yes
   tasks:
     - name: Update packages
-      become: yes
-      become_user: root
       apt:
         update_cache: yes
         upgrade: dist
