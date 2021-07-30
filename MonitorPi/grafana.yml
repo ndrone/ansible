@@ -3,13 +3,6 @@
   hosts: monitorpi
   become: yes
   tasks:
-    - name: Download GPG key
-      get_url:
-        url: https://packages.grafana.com/gpg.key
-        dest: /home/ansible/grafana.gpg
-#        install must be ran manually as root user
-#    - name: Install GPG key
-#      command: gpg --dearmor < /home/ansible/grafana.gpg > /usr/share/keyrings/grafana-archive-keyring.gpg
     - name: Add Grafana repository
       apt_repository:
         repo: deb [signed-by=/usr/share/keyrings/grafana-archive-keyring.gpg] https://packages.grafana.com/oss/deb stable main

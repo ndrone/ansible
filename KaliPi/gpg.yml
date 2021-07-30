@@ -1,0 +1,21 @@
+---
+- name: Kali GPG Key Download
+  hosts: kalipi
+  become: yes
+  tasks:
+    - name: install gnupg1
+      apt:
+        update_cache: yes
+        name: gnupg1
+    - name: install apt-transport-https
+      apt:
+        update_cache: yes
+        name: apt-transport-https
+    - name: install dirmngr
+      apt:
+        update_cache: yes
+        name: dirmngr
+    - name: Download GPG key
+      get_url:
+        url: http://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2020.2_all.deb
+        dest: /home/ansible/kali-archive-keyring_2020.2_all.deb

@@ -3,13 +3,6 @@
   hosts: monitorpi
   become: yes
   tasks:
-    - name: Download GPG key
-      get_url:
-        url: https://repos.influxdata.com/influxdb.key
-        dest: /home/ansible/influxdb.gpg
-#        install must be ran manually as root user
-#    - name: Install GPG key
-#      command: gpg --dearmor < /home/ansible/influxdb.gpg > /usr/share/keyrings/influxdb-archive-keyring.gpg
     - name: Add InfluxDB repository
       apt_repository:
         repo: deb [signed-by=/usr/share/keyrings/influxdb-archive-keyring.gpg] https://repos.influxdata.com/debian buster stable

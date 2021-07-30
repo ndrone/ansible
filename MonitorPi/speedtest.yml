@@ -3,25 +3,6 @@
   hosts: monitorpi
   become: yes
   tasks:
-    - name: install gnupg1
-      apt:
-        update_cache: yes
-        name: gnupg1
-    - name: install apt-transport-https
-      apt:
-        update_cache: yes
-        name: apt-transport-https
-    - name: install dirmngr
-      apt:
-        update_cache: yes
-        name: dirmngr
-    - name: Download GPG key
-      get_url:
-        url: https://packagecloud.io/ookla/speedtest-cli/gpgkey
-        dest: /home/ansible/speedtest.gpg
-#        install must be ran manually as root user
-#    - name: Install GPG key
-#      command: gpg --dearmor < /home/ansible/speedtest.gpg > /usr/share/keyrings/speedtest-cli-archive-keyring.gpg
     - name: Add Speedtest repository
       apt_repository:
         repo: deb [signed-by=/usr/share/keyrings/speedtest-cli-archive-keyring.gpg] https://packagecloud.io/ookla/speedtest-cli/debian/ buster main
