@@ -1,6 +1,6 @@
 ---
 - name: Download All GPG Keys
-  hosts: monitorpi
+  hosts: initial
   become: yes
   tasks:
     - name: install gnupg1
@@ -15,11 +15,7 @@
       apt:
         update_cache: yes
         name: dirmngr
-    - name: Download Speedtest GPG key
+    - name: Download Influx GPG key
       get_url:
-        url: https://packagecloud.io/ookla/speedtest-cli/gpgkey
-        dest: /home/ansible/speedtest.gpg
-    - name: Download Grafana GPG key
-      get_url:
-        url: https://packages.grafana.com/gpg.key
-        dest: /home/ansible/grafana.gpg
+        url: https://repos.influxdata.com/influxdb.key
+        dest: /home/ansible/influxdb.gpg
