@@ -5,7 +5,7 @@
   tasks:
     - name: Add InfluxDB repository
       apt_repository:
-        repo: deb [signed-by=/usr/share/keyrings/influxdb-archive-keyring.gpg] https://repos.influxdata.com/debian buster stable
+        repo: deb [signed-by=/usr/share/keyrings/influxdb-archive-keyring.gpg] https://repos.influxdata.com/debian bullseye stable
         state: present
         filename: influxdb
     - name: InfluxDB Install

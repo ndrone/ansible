@@ -5,7 +5,7 @@
   tasks:
     - name: Add Speedtest repository
       apt_repository:
-        repo: deb [signed-by=/usr/share/keyrings/speedtest-cli-archive-keyring.gpg] https://packagecloud.io/ookla/speedtest-cli/debian/ buster main
+        repo: deb [signed-by=/usr/share/keyrings/speedtest-cli-archive-keyring.gpg] https://packagecloud.io/ookla/speedtest-cli/debian/ bullseye main
         state: present
         filename: speedtest
     - name: Speedtest Install
