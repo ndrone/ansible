@@ -13,6 +13,15 @@
     - name: Install Java Runtime
       apt:
         name: openjdk-8-jre-headless
+    - name: Install JSVC
+      apt:
+        name: jsvc
+    - name: Install Java Libcommons daemon
+      apt:
+        name: libcommons-daemon-java
+    - name: Install Haveged
+      apt:
+        name: haveged
     - name: Install RNG Tools
       apt:
         name: rng-tools
@@ -25,3 +34,14 @@
       systemd:
         name: rng-tools
         state: restarted
+    - name: Add MongoDB repository
+      apt_repository:
+        repo: deb http://archive.raspbian.org/raspbian stretch main contrib non-free rpi
+        state: present
+        filename: mongodb
+    - name: Install MongoDB Server
+      apt:
+        name: mongodb-server
+    - name: Install MongoDB Client
+      apt:
+        name: mongodb-clients
