@@ -18,7 +18,7 @@
         name: rng-tools
     - name: Update RNG Tools Config file
       lineinfile:
-        path: /etc/default/rng-tools
+        path: /etc/default/rng-tools-debian
         regexp: '^#HRNGDEVICE=\/dev\/hwrng'
         line: 'HRNGDEVICE=/dev/hwrng'
     - name: Restart RNG Tools
