@@ -3,6 +3,10 @@
   hosts: dns
   become: yes
   tasks:
+    - name: Git Install
+      apt:
+        update_cache: yes
+        name: git
     - name: Clone repository
       git:
         repo: https://github.com/K0p1-Git/cloudflare-ddns-updater.git
